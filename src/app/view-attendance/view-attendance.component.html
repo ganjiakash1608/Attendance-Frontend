@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <div class="row justify-content-lg-center">
+        <div class="col-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 style="color : rgb(15, 113, 224)">
+                            View Attendance
+                        </h5>
+                    </div>
+                    <div>
+                        Select date: <input type="date" class='form-control' style="width: 30%;margin-left: 35%"
+                            [(ngModel)]="date">
+                        <button class="btn btn-primary" (click)="getAttendance()" *ngIf="date != undefined"
+                            style="margin-bottom: 10px">Go</button>&nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-primary" (click)="back()"
+                            style="margin-bottom: 10px">Back</button>
+                    </div>
+                    <div *ngIf="showAtd">
+                        <table>
+                            <td>
+                                Attendance
+                            </td>
+                            <td
+                                [ngStyle]="attendance.present=='PRESENT'?{'background-color':'green'} : attendance.present=='ABSENT' ?{'background-color': 'red'} : attendance.present=='Leave'? {'background-color':'blue'}: {'background-color':'yellow'}">
+                                <h5>
+                                    {{attendance.present}}
+                                </h5>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<br>
+
+<body>
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-lg-12">
+        <form class="form">
+          <div class="row bg-info">
+            <h4 class="mx-auto" style="margin-top: 10px;margin-left: 30%">
+              Employees List &nbsp; &nbsp; &nbsp; &nbsp;
+                </h4>
+                <td><button class="btn" type="submit"
+                  routerLink="/home">LogOut</button></td>                  
+              <td><button class="btn" type="submit" routerLink="/attendance" style="margin-left: 10px">Mark
+                  Attendance</button></td>
+              <td><button class="btn" type="submit" routerLink="/lop" style="margin-left: 10px">Calculate
+                  LOP</button></td>
+            
+          </div>
+
+          <table>
+
+            <tr>
+              <th>Employee Id</th>&nbsp;&nbsp; &nbsp;
+              <th>First Name</th>&nbsp; &nbsp;
+              <th>Last Name</th>&nbsp; &nbsp;
+              <th>DOB</th>&nbsp; &nbsp;
+              <th>Gender</th>&nbsp; &nbsp;
+              <th>Email</th> &nbsp; &nbsp;
+              <th>Contact</th>&nbsp; &nbsp;
+              <th>Designation</th>&nbsp; &nbsp;
+              <th>Salary</th>&nbsp; &nbsp;
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            <tbody>
+              <tr *ngFor="let Employee of employeeArr">
+                <td>{{Employee.id}}</td>&nbsp; &nbsp;
+                <td>{{Employee.firstName}}</td>&nbsp; &nbsp;
+                <td>{{Employee.lastName}}</td>&nbsp; &nbsp;
+                <td>{{Employee.employeeDOB}}</td>&nbsp; &nbsp;
+                <td>{{Employee.employeeGender}}</td>&nbsp; &nbsp;
+                <td>{{Employee.employeeEmailId}}</td>&nbsp; &nbsp;
+                <td>{{Employee.employeeContact}}</td>&nbsp; &nbsp;
+                <td>{{Employee.employeeDesignation}}</td>&nbsp; &nbsp;
+                <td>{{Employee.salary}}</td>&nbsp; &nbsp;
+                <td><button type="button" class="btn btn-primary" [routerLink]="['/employeedetails']"
+                    [queryParams]="{id: Employee.id}">Edit</button></td>
+                <td><button type="button" class="btn btn-primary" (click)="deleteEmployee(Employee.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        <br>
+        <button type="button" class="btn btn-primary" routerLink="/employeedetails">Add New Employee</button>
+      </div>

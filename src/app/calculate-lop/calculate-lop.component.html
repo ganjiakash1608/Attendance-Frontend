@@ -1,0 +1,93 @@
+<div class="container mt-3">
+    <div class="row justify-content-lg-center">
+        <div class="col-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 style="color : rgb(15, 113, 224)">
+                            Calculate
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-2">For Month :</h6>
+                        <select [(ngModel)]="lop.month" class='form-control col-5' style="width: 20%">
+                            <option *ngFor="let month of monthArr" [value]="month.monthNumber" [disabled]="!month.isActive">{{month.monthName}}</option>    
+                        </select>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" (click)="loadLop()" *ngIf="lop.month != undefined"
+                        style="margin-bottom: 10px">Go</button>&nbsp;&nbsp; &nbsp;
+                    <button class="btn btn-primary" (click)="back()"
+                        style="margin-bottom: 10px">Back</button>
+                    <form>
+                        <table *ngIf="showEmp">
+                            <tr>
+                                <th> Employee ID </th>
+                                <td> {{lop.empFromLop.id}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee FirstName </th>
+                                <td> {{lop.empFromLop.firstName}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee LastName </th>
+                                <td> {{lop.empFromLop.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee Email-Id </th>
+                                <td> {{lop.empFromLop.employeeEmailId}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee's Salary </th>
+                                <td> {{lop.empFromLop.salary}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee's Privilege Leaves</th>
+                                <td>{{pl}}</td>
+                            </tr>
+                            <tr>
+                                <th> Employee's Actual Leaves </th>
+                                <td> {{leave}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <th>
+                                    No of Working Days
+                                </th>
+                                <td><input type="number" name="totalDays" class='form-control'
+                                        [(ngModel)]="lop.totalDays">
+                                </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td colspan="2">
+                                    <button class="btn btn-primary" (click)="calculate()"
+                                        *ngIf="lop.totalDays != undefined && lop.totalDays>0"
+                                        style="width: 70%">Calculate</button>
+                                </td> 
+                            </tr>-->
+                            <tr *ngIf="!showLop">
+                                <td colspan="2" class="text-center text-success"><h5>No LOP Required</h5></td>
+                            </tr>
+                            <tr *ngIf="showLop">
+                                <th class="text-danger">
+                                    Salary to be Paid After Lop
+                                </th>
+                                <td>
+                                    {{lop.lop}}
+                                </td>
+                            </tr>
+                            <tr *ngIf="showLop">
+                                <td colspan="2">
+                                    <button class="btn btn-primary" (click)="submit()" style="width: 70%"
+                                        *ngIf="submitFlag">Submit</button>
+
+                                    <button class="btn btn-primary" (click)="update()" style="width: 70%"
+                                        *ngIf="!submitFlag">Update</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

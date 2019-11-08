@@ -1,0 +1,33 @@
+<div class="container">
+
+  <body>
+    <div>
+      <h1>
+        Welcome to Admin's Login Page...!
+      </h1>
+    </div>
+    <form (ngSubmit)="  getAdmin() " #addData=ngForm ngNativeValidate>
+      <table>
+        <tr>
+          
+          <td><label for="adminEmailId">Email-id</label></td>
+          <td><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="adminEmailId"
+              class="form-control" [(ngModel)]="login.adminEmailId" #email=ngModel required placeholder="userId"></td>
+
+          <span class="alert alert-danger" [hidden]="email.pristine || email.valid">Enter Valid Email-id</span>
+        </tr>
+
+        <tr>
+          <td><label for="password">Password: </label></td>
+          <td><input name="password" type="password" class="form-control" placeholder="password"
+              [(ngModel)]="login.password" required>
+          </td>
+        </tr>
+
+        <tr>
+          <button *ngIf="!isEditing" class="btn btn-success btn-block" [disabled]="addData.invalid">Login</button>
+        </tr>
+      </table>
+    </form>
+  </body>
+</div>

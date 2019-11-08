@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <div class="row justify-content-lg-center">
+        <div class="col-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 style="color : rgb(15, 113, 224)">
+                            Apply Leave
+                        </h5>
+                    </div>
+                    <div>
+                        From date : <input type="date" class='form-control' style="width: 30%;margin-left: 35%"
+                            [(ngModel)]="fromDate">
+                        To date : <input type="date" class='form-control' style="width: 30%;margin-left: 35%"
+                            [(ngModel)]="toDate" [min]="fromDate">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" (click)="back()"
+                            style="margin-bottom: 10px">Back</button>&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-primary" (click)="apply()"
+                            *ngIf="fromDate != undefined && toDate != undefined"
+                            style="margin-bottom: 10px">Apply</button>
+                    </div>
+                    <div *ngIf="success">
+                        <p style="color: green">Leave Apply Successfully</p>
+                    </div>
+                    <div *ngIf="invalid">
+                            <p style="color: red">Record Already existed in between given date/s</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

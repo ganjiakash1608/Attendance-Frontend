@@ -1,0 +1,43 @@
+<div class="container mt-3">
+    <div class="row justify-content-lg-center">
+        <div class="col-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 style="color : rgb(15, 113, 224)">
+                            Calculate Loss Of Pay
+                        </h5>
+                    </div>
+                    <form class="form">
+                        <table>
+                            <tr>
+                                <th>Employee Id</th>&nbsp;&nbsp; &nbsp;
+                                <th>First Name</th>&nbsp; &nbsp;
+                                <th>Last Name</th>&nbsp; &nbsp;
+                                <th>Email</th> &nbsp; &nbsp;
+                                <th></th> &nbsp; &nbsp;
+                            </tr>
+                            <tbody>
+                                <tr *ngFor="let Employee of employeeArr">
+                                    <td>{{Employee.id}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.firstName}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.lastName}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.employeeEmailId}}</td>&nbsp; &nbsp;
+                                    <td>
+                                        <div>
+                                            <button class="btn btn-primary" (click)="calculate(Employee.id)"
+                                                style="margin-bottom: 10px">Calculate</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button class="btn btn-primary" (click)="back()"
+                        style="margin-bottom: 10px">Back</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

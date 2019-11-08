@@ -1,0 +1,64 @@
+<div class="container mt-3">
+    <div class="row justify-content-lg-center">
+        <div class="col-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 style="color : rgb(15, 113, 224)">
+                            Mark Attendance
+                        </h5>
+                    </div>
+                    <div>
+                        For Date:
+                        <input type="date" class='form-control' style="width: 30%;margin-left: 35%"
+                            [(ngModel)]="date">
+                        <button class="btn btn-primary" (click)="loadEmps()" *ngIf="date != undefined"
+                            style="margin-bottom: 10px">Go</button>&nbsp;&nbsp; &nbsp;
+                            <button class="btn btn-primary" (click)="back()"
+                            style="margin-bottom: 10px">Back</button>
+                    </div>
+                    <form class="form" *ngIf="showEmps">
+                        <table>
+                            <tr>
+                                <th>Employee Id</th>&nbsp;&nbsp; &nbsp;
+                                <th>First Name</th>&nbsp; &nbsp;
+                                <th>Last Name</th>&nbsp; &nbsp;
+                                <th>Email</th> &nbsp; &nbsp;
+                                <th>Mark Attendance</th> &nbsp; &nbsp;
+                            </tr>
+                            <tbody>
+                                <tr *ngFor="let Employee of employeeArr">
+                                    <td>{{Employee.id}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.firstName}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.lastName}}</td>&nbsp; &nbsp;
+                                    <td>{{Employee.employeeEmailId}}</td>&nbsp; &nbsp;
+                                    <td>
+                                        <div *ngIf="!leave.get(Employee.id)">
+                                        <input type="checkbox" (change)="toggleFlag(Employee.id)"
+                                            [checked]="attendance.get(Employee.id)" />
+                                        </div>
+                                        <div *ngIf="leave.get(Employee.id)" style="background: red">
+                                            <h5>On Leave</h5>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button (click)="submit()" *ngIf="employeeArr.length && submitFlag> 0" class="btn btn-primary"
+                            style="width:20%; margin-top: 10px">
+                            Submit
+                        </button>
+                        <button (click)="update()" *ngIf="employeeArr.length > 0 && !submitFlag" class="btn btn-primary"
+                            style="width:20%; margin-top: 10px">
+                            Update
+                        </button>
+                        <button (click)="reload()" *ngIf="employeeArr.length > 0 && !submitFlag" class="btn btn-primary"
+                            style="width:40%; margin-top: 10px; margin-left: 10px">
+                            Add another Record
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container">
+
+    <body>
+        <div>
+            <h1>
+                Welcome
+            </h1>
+        </div>
+        <form (ngSubmit)=" validateAction() " #addData=ngForm ngNativeValidate>
+            <table>
+                <tr>
+                    <td><label for="firstName">First Name</label></td>
+                    <td><input type="text" pattern="^[a-zA-Z\s]+$" name="firstName" class='form-control' [(ngModel)]="employee.firstName" required></td>
+                    
+                </tr>
+
+                <tr>
+                    <td><label for="lastName">Last Name</label></td>
+                    <td><input type="text" pattern="^[a-zA-Z\s]+$" name="lastName" class='form-control' [(ngModel)]="employee.lastName" required></td>
+
+                </tr>
+
+                <tr>
+                    <td><label for="employeeEmailId">Email-id</label></td>
+                    <td><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="employeeEmailId"
+                            class="form-control" [(ngModel)]="employee.employeeEmailId" #email=ngModel required></td>
+
+                    <span class="alert alert-danger" [hidden]="email.pristine || email.valid">Enter Valid
+                        Email-id</span>
+                </tr>
+
+                <tr>
+                    <td><label for="employeeContact">Contact no</label></td>
+                    <td><input type="tel" pattern="^[6-9]\d{9}$" minlength="10" maxlength="10" name="employeeContact"
+                            class="form-control" [(ngModel)]="employee.employeeContact" required #contact=ngModel></td>
+
+                    <span class="alert alert-danger" [hidden]="contact.pristine || contact.valid">Enter Valid
+                        number</span>
+                </tr>
+
+                <tr>
+                    <td><label for="employeeDesignation">Designation</label></td>
+                    <td><input type="text" name="employeeDesignation" class='form-control'
+                            [(ngModel)]="employee.employeeDesignation" required></td>
+
+                </tr>
+
+                <tr>
+                    <td><label for="employeeDOB">DOB</label></td>
+                    <td><input type="date"name="employeeDOB" class='form-control' [(ngModel)]="employee.employeeDOB" required>
+                    </td>
+
+                </tr>
+
+                <tr>
+                        <td><label for="salary">Salary</label></td>
+                        <td><input type="number" name="salary" class='form-control' [(ngModel)]="employee.salary" required>
+                        </td>
+    
+                    </tr>
+
+                <tr>
+                    <td><label for="employeeGender" >Gender</label></td>
+                    <td>
+                        <div class='form-control'>
+                            <input type="radio" value="male" required name="employeeGender"
+                                 [(ngModel)]="employee.employeeGender"> Male
+                            <input type="radio" value="female" required name="employeeGender"
+                                 [(ngModel)]="employee.employeeGender"> Female
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <button *ngIf="!isEditing" class="btn btn-success btn-block"
+                            [disabled]="addData.invalid">Submit</button>
+                        <!-- <button type="submit" class="btn btn-success" (click)="Validation()">Submit</button>-->
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</div>

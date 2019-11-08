@@ -1,0 +1,33 @@
+<div class="container">
+  <body>
+    <div>
+    <h1>
+      Welcome to Employee's Login Page...!
+    </h1>
+  </div>
+  <form (ngSubmit)="getEmployee()" #addData=ngForm ngNativeValidate>
+    <table>
+      <tr>
+    <!----  <td><label for='userId'>Username:</label></td>
+        <td><input type='text' name='userId' class='form-control' [(ngModel)]='userId' placeholder="userId" required></td>-->
+      <td><label for="employeeEmailId">Email-id</label></td>
+        <td><input  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            name="employeeEmailId"  class="form-control" [(ngModel)]="login.employeeEmailId" #email=ngModel required placeholder="userId"></td>
+       
+       <span class="alert alert-danger" [hidden]="email.pristine || email.valid">Enter Valid Email-id</span>
+      </tr>
+
+      <tr>
+        <td><label for="employeePassword">Password: </label></td>
+        <td><input name="employeePassword" type="password"  class="form-control" placeholder="password" [(ngModel)]="login.employeePassword" required>
+        </td>
+      </tr>
+
+      <tr>
+       <!---- <td><button class="btn btn-primary" type="submit" (click)="storeCredentials()">Login</button></td>-->
+       <button *ngIf="!isEditing" class="btn btn-success btn-block" [disabled]="addData.invalid">Login</button>
+      </tr>
+    </table>
+   </form>
+</body>
+</div>
